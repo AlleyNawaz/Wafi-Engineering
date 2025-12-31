@@ -33,7 +33,7 @@ export const projects = [
     id: 1,
     title: "500kW Solar Installation",
     category: "Infrastructure",
-    image: "/images/project-1.jpg",
+    image: "/images/500kv.png",
     description:
       "Industrial grid-tied solar system for textile manufacturing unit.",
   },
@@ -41,7 +41,7 @@ export const projects = [
     id: 2,
     title: "UAV Prototype Design",
     category: "Digital",
-    image: "/images/project-2.jpg",
+    image: "/images/Uav.avif",
     description:
       "Aerodynamic analysis and prototyping of long-range surveillance UAV.",
   },
@@ -49,7 +49,7 @@ export const projects = [
     id: 3,
     title: "Dental Surgical Kit Export",
     category: "Products",
-    image: "/images/project-3.jpg",
+    image: "/images/Dental.jpg",
     description:
       "High-precision surgical instruments batch exported to Germany.",
   },
@@ -57,7 +57,7 @@ export const projects = [
     id: 4,
     title: "Commercial High-Rise",
     category: "Infrastructure",
-    image: "/images/project-4.jpg",
+    image: "/images/Construction.jpg",
     description:
       "Sustainable commercial complex with integrated BMS and solar facade.",
   },
@@ -65,7 +65,7 @@ export const projects = [
     id: 5,
     title: "Aerospace CFD Analysis",
     category: "Digital",
-    image: "/images/project-5.jpg",
+    image: "/images/Aerospace.png",
     description:
       "Computational Fluid Dynamics analysis for wing lift optimization.",
   },
@@ -73,7 +73,7 @@ export const projects = [
     id: 6,
     title: "BLDC Smart Fans",
     category: "Products",
-    image: "/images/project-6.jpg",
+    image: "/images/Fans.avif",
     description: "IoT-enabled energy efficient ceiling fans for smart homes.",
   },
 ];
@@ -110,12 +110,16 @@ export const leadership = [
     name: "Ali Hamza",
     role: "Chief Executive Officer",
     bio: "Visionary leader with over 15 years of experience in sustainable infrastructure and strategic management. Driving Wafi Engineering towards a greener future.",
-    image: "/images/team-ali.jpg",
+    image: "/images/AliHamza.jpeg",
+    linkedin: "https://www.linkedin.com/in/ali-hamza-931a27179/",
+    email: "WafiEngineering1@gmail.com",
   },
   {
     name: "Muhammad Usman",
     role: "Chief Operating Officer",
     bio: "Operational excellence expert ensuring seamless execution of complex engineering projects across all business verticals.",
-    image: "/images/team-usman.jpg",
+    image: "/images/Usman.png",
+    linkedin: "https://www.linkedin.com/in/muhammad-usman-586044391/",
+    email: "WafiEngineering1@gmail.com",
   },
 ];

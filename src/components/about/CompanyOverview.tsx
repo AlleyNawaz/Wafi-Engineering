@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 export function CompanyOverview() {
   return (
@@ -64,9 +65,12 @@ export function CompanyOverview() {
           >
             <div className="aspect-square rounded-2xl overflow-hidden bg-slate-800 relative z-10 border border-slate-700">
               {/* Image Placeholder */}
-              <div className="absolute inset-0 flex items-center justify-center text-slate-500">
-                [Company Office / Team Photo]
-              </div>
+              <Image
+                src="/images/Office.jpeg"
+                alt="Wafi Engineering Office"
+                fill
+                className="object-cover"
+              />
             </div>
             {/* Decorative element */}
             <div className="absolute -bottom-6 -right-6 w-2/3 h-2/3 bg-amber-500/10 rounded-2xl -z-10 border border-amber-500/20" />

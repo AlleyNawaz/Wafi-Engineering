@@ -5,6 +5,7 @@ import { projects } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 
 const categories = ["All", "Infrastructure", "Digital", "Products"];
@@ -61,9 +62,12 @@ export default function ProjectsPage() {
                 className="bg-slate-900 rounded-xl overflow-hidden border border-slate-800 group hover:border-amber-500/50 cursor-pointer"
               >
                 <div className="aspect-[4/3] bg-slate-800 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-slate-800 flex items-center justify-center text-slate-500">
-                    [Image: {project.title}]
-                  </div>
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                   <div className="absolute inset-0 bg-slate-950/20 group-hover:bg-transparent transition-colors" />
                 </div>
 

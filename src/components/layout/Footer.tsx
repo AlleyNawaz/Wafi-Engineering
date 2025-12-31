@@ -1,14 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Facebook,
-  Linkedin,
-  Twitter,
-  Mail,
-  MapPin,
-  Phone,
-  MessageCircle,
-} from "lucide-react";
+import { Facebook, Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
 
 export function Footer() {
   return (
@@ -53,13 +46,13 @@ export function Footer() {
                 <Facebook className="h-5 w-5" />
               </Link>
               <Link
-                href="https://web.whatsapp.com/send?phone=923091945834&text=Hello%2C%20I%20need%20assistance!"
+                href="https://wa.me/923091945834?text=Hello%20Wafi%20Engineering%2C%20I%20would%20like%20to%20inquire%20about%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-amber-500 transition-colors"
                 aria-label="WhatsApp"
               >
-                <MessageCircle className="h-5 w-5" />
+                <WhatsAppIcon className="h-5 w-5" />
               </Link>
             </div>
           </div>

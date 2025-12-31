@@ -43,12 +43,12 @@ export function ProjectsGrid() {
               className="group relative overflow-hidden rounded-xl bg-slate-950 border border-slate-800 aspect-[4/3] cursor-pointer"
             >
               {/* Image Placeholder - In real app use Image component with actual files */}
-              <div className="absolute inset-0 bg-slate-800 transition-transform duration-500 group-hover:scale-110">
-                {/* <Image src={project.image} alt={project.title} fill className="object-cover" /> */}
-                <div className="w-full h-full bg-slate-800 flex items-center justify-center text-slate-600">
-                  [Project Image: {project.title}]
-                </div>
-              </div>
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+              />
 
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
 
