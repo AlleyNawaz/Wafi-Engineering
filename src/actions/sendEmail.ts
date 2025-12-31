@@ -4,14 +4,10 @@ import { z } from "zod";
 import nodemailer from "nodemailer";
 
 const contactFormSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Invalid email address." }),
-  subject: z
-    .string()
-    .min(5, { message: "Subject must be at least 5 characters." }),
-  message: z
-    .string()
-    .min(10, { message: "Message must be at least 10 characters." }),
+  name: z.string().min(2),
+  email: z.string().email(),
+  subject: z.string().min(5),
+  message: z.string().min(10),
 });
 
 type ContactFormState = {
@@ -29,76 +25,93 @@ export async function sendEmail(
   _prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
-  const validatedFields = contactFormSchema.safeParse({
+  const validated = contactFormSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
     subject: formData.get("subject"),
     message: formData.get("message"),
   });
 
-  if (!validatedFields.success) {
-    return {
-      errors: validatedFields.error.flatten().fieldErrors,
-    };
+  if (!validated.success) {
+    return { errors: validated.error.flatten().fieldErrors };
   }
 
-  const { name, email, subject, message } = validatedFields.data;
+  const { name, email, subject, message } = validated.data;
 
   try {
-    // 🔒 HARD FAIL if SMTP is not configured
     if (
       !process.env.SMTP_HOST ||
       !process.env.SMTP_USER ||
       !process.env.SMTP_PASS
     ) {
-      throw new Error("SMTP environment variables are missing");
+      throw new Error("SMTP env vars missing");
     }
 
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: process.env.SMTP_SECURE === "true",
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
     });
 
-    await transporter.sendMail({
-      from:
-        process.env.SMTP_FROM ||
-        `"Wafi Engineering Website" <gethelp.wafiengineering@gmail.com>`,
-      to: "AliPythonDev@gmail.com",
-      replyTo: email, // 👈 IMPORTANT: lets you reply directly to sender
-      subject: `New Contact Form Submission: ${subject}`,
-      text: `
-Name: ${name}
-Email: ${email}
-Subject: ${subject}
+    await transporter.verify();
 
-Message:
+    await transporter.sendMail({
+      from: `"Wafi Engineering" <gethelp.wafiengineering@gmail.com>`,
+
+      // ✅ USER gets the email
+      to: email,
+
+      // ✅ You can reply directly to the user
+      replyTo: email,
+
+      subject: `We received your message: ${subject}`,
+
+      text: `
+Hello ${name},
+
+Thank you for contacting Wafi Engineering.
+We have received your message and will get back to you shortly.
+
+------------------------
+Your Message:
 ${message}
+------------------------
+
+Best regards,
+Wafi Engineering Team
       `,
+
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
+        <p>Hello <strong>${name}</strong>,</p>
+
+        <p>Thank you for contacting <strong>Wafi Engineering</strong>.
+        We have received your message and will get back to you shortly.</p>
+
         <hr />
-        <p>${message.replace(/\n/g, "<br />")}</p>
+
+        <p><strong>Your Message:</strong></p>
+        <p>${message.replace(/\n/g, "<br/>")}</p>
+
+        <br />
+        <p>Best regards,<br />
+        <strong>Wafi Engineering Team</strong></p>
       `,
     });
 
-    console.log(
-      "✅ Email successfully sent to gethelp.wafiengineering@gmail.com"
-    );
+    console.log("✅ Email sent to user + CC to admin");
 
     return { success: true };
   } catch (error) {
-    console.error("❌ Email sending failed:", error);
+    console.error("❌ EMAIL ERROR:", error);
     return {
       errors: {
-        _form: ["Failed to send email. Please try again later."],
+        _form: [
+          "Email service is temporarily unavailable. Please try again later.",
+        ],
       },
     };
   }
