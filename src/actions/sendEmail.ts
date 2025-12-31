@@ -4,10 +4,10 @@ import { z } from "zod";
 import nodemailer from "nodemailer";
 
 const contactFormSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  subject: z.string().min(5),
-  message: z.string().min(10),
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  subject: z.string().min(5, "Subject must be at least 5 characters"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
 type ContactFormState = {
@@ -25,28 +25,33 @@ export async function sendEmail(
   _prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
-  const validated = contactFormSchema.safeParse({
+  // 1️⃣ Validate input
+  const parsed = contactFormSchema.safeParse({
     name: formData.get("name"),
     email: formData.get("email"),
     subject: formData.get("subject"),
     message: formData.get("message"),
   });
 
-  if (!validated.success) {
-    return { errors: validated.error.flatten().fieldErrors };
+  if (!parsed.success) {
+    return {
+      errors: parsed.error.flatten().fieldErrors,
+    };
   }
 
-  const { name, email, subject, message } = validated.data;
+  const { name, email, subject, message } = parsed.data;
 
   try {
+    // 2️⃣ Ensure SMTP config exists
     if (
       !process.env.SMTP_HOST ||
       !process.env.SMTP_USER ||
       !process.env.SMTP_PASS
     ) {
-      throw new Error("SMTP env vars missing");
+      throw new Error("SMTP environment variables are missing");
     }
 
+    // 3️⃣ Create transporter (Gmail SMTP)
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: 587,
@@ -57,15 +62,20 @@ export async function sendEmail(
       },
     });
 
+    // 4️⃣ Verify SMTP connection (important)
     await transporter.verify();
 
+    // 5️⃣ Send email
     await transporter.sendMail({
-      from: `"Wafi Engineering" <gethelp.wafiengineering@gmail.com>`,
+      from: `"Wafi Engineering" <${process.env.SMTP_USER}>`,
 
-      // ✅ USER gets the email
+      // ✅ Email goes to the user
       to: email,
 
-      // ✅ You can reply directly to the user
+      // ✅ You receive a copy
+      cc: "WafiEngineering1@gmail.com",
+
+      // ✅ Reply goes to the user
       replyTo: email,
 
       subject: `We received your message: ${subject}`,
@@ -102,11 +112,12 @@ Wafi Engineering Team
       `,
     });
 
-    console.log("✅ Email sent to user + CC to admin");
+    console.log("✅ Email sent successfully");
 
     return { success: true };
   } catch (error) {
-    console.error("❌ EMAIL ERROR:", error);
+    console.error("❌ Email error:", error);
+
     return {
       errors: {
         _form: [
