@@ -26,7 +26,7 @@ type ContactFormState = {
 };
 
 export async function sendEmail(
-  prevState: ContactFormState,
+  _prevState: ContactFormState,
   formData: FormData
 ): Promise<ContactFormState> {
   const validatedFields = contactFormSchema.safeParse({
@@ -44,63 +44,58 @@ export async function sendEmail(
 
   const { name, email, subject, message } = validatedFields.data;
 
-  // Mock Email Sending Logic
-  // In a real application, you would configure the transporter with valid SMTP credentials.
-  // We'll log the email to the console to simulate sending.
-
   try {
-    // Determine transport configuration
-    // If environment variables are set, use them. Otherwise, log to console.
-    const hasSmtp =
-      process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS;
-
-    if (hasSmtp) {
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT) || 587,
-        secure: process.env.SMTP_SECURE === "true", // true for 465, false for other ports
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
-
-      await transporter.sendMail({
-        from:
-          process.env.SMTP_FROM ||
-          '"Wafi Engineering Website" <no-reply@wafiengineering.com>', // sender address
-        to: "AliPythonDev@gmail.com", // list of receivers
-        subject: `New Contact Form Submission: ${subject}`, // Subject line
-        text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`, // plain text body
-        html: `
-            <h3>New Contact Form Submission</h3>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Subject:</strong> ${subject}</p>
-            <br/>
-            <p><strong>Message:</strong></p>
-            <p>${message.replace(/\n/g, "<br>")}</p>
-          `, // html body
-      });
-
-      console.log("Email sent successfully via SMTP to AliPythonDev@gmail.com");
-    } else {
-      // Fallback simulation
-      console.log("==================================================");
-      console.log("SIMULATING EMAIL SEND - SMTP CREDENTIALS MISSING");
-      console.log(`To: AliPythonDev@gmail.com`);
-      console.log(`From: ${name} <${email}>`);
-      console.log(`Subject: ${subject}`);
-      console.log(`Message: ${message}`);
-      console.log("==================================================");
-
-      // Human-readable delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+    // 🔒 HARD FAIL if SMTP is not configured
+    if (
+      !process.env.SMTP_HOST ||
+      !process.env.SMTP_USER ||
+      !process.env.SMTP_PASS
+    ) {
+      throw new Error("SMTP environment variables are missing");
     }
+
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT) || 587,
+      secure: process.env.SMTP_SECURE === "true",
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+
+    await transporter.sendMail({
+      from:
+        process.env.SMTP_FROM ||
+        `"Wafi Engineering Website" <gethelp.wafiengineering@gmail.com>`,
+      to: "AliPythonDev@gmail.com",
+      replyTo: email, // 👈 IMPORTANT: lets you reply directly to sender
+      subject: `New Contact Form Submission: ${subject}`,
+      text: `
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
+
+Message:
+${message}
+      `,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <hr />
+        <p>${message.replace(/\n/g, "<br />")}</p>
+      `,
+    });
+
+    console.log(
+      "✅ Email successfully sent to gethelp.wafiengineering@gmail.com"
+    );
 
     return { success: true };
   } catch (error) {
-    console.error("Failed to send email:", error);
+    console.error("❌ Email sending failed:", error);
     return {
       errors: {
         _form: ["Failed to send email. Please try again later."],
