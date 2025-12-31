@@ -33,9 +33,11 @@ export default function ContactPage() {
                     Head Office
                   </h4>
                   <p className="text-slate-400">
-                    One Skyline Tower, 5013,
+                    Wafi Engineering
                     <br />
-                    Falls Church, VA 22041, USA
+                    Street No. 1, Opposite Income Tax Office,
+                    <br />
+                    G.T. Road, Gujranwala, Pakistan
                   </p>
                 </div>
               </div>
@@ -46,10 +48,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold text-white mb-1">Phone</h4>
-                  <p className="text-slate-400">+1 (123) 456-7890</p>
-                  <p className="text-slate-400">
-                    +92 (300) 123-4567 (PK Office)
-                  </p>
+                  <p className="text-slate-400">+923091945834</p>
                 </div>
               </div>
 

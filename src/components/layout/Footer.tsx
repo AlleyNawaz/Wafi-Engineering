@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Facebook, Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import {
+  Facebook,
+  Linkedin,
+  Twitter,
+  Mail,
+  MapPin,
+  Phone,
+  MessageCircle,
+} from "lucide-react";
 
 export function Footer() {
   return (
@@ -17,17 +25,41 @@ export function Footer() {
               Engineered Product Solutions for a better future.
             </p>
             <div className="flex space-x-4">
-              <Link href="#" className="hover:text-amber-500 transition-colors">
+              <Link
+                href="https://pk.linkedin.com/company/wafiengineering"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-500 transition-colors"
+                aria-label="LinkedIn"
+              >
                 <Linkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
               </Link>
-              <Link href="#" className="hover:text-amber-500 transition-colors">
+              <Link
+                href="https://x.com/WafiEngineering"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-500 transition-colors"
+                aria-label="Twitter"
+              >
                 <Twitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="hover:text-amber-500 transition-colors">
+              <Link
+                href="https://www.facebook.com/people/Wafi-Engineering/61581184391811"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-500 transition-colors"
+                aria-label="Facebook"
+              >
                 <Facebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
+              </Link>
+              <Link
+                href="https://web.whatsapp.com/send?phone=923091945834&text=Hello%2C%20I%20need%20assistance!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-amber-500 transition-colors"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="h-5 w-5" />
               </Link>
             </div>
           </div>
@@ -109,14 +141,16 @@ export function Footer() {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-3 text-amber-500 shrink-0" />
                 <span>
-                  One Skyline Tower, 5013,
+                  Wafi Engineering
                   <br />
-                  Falls Church, VA 22041, USA
+                  Street No. 1, Opposite Income Tax Office,
+                  <br />
+                  G.T. Road, Gujranwala, Pakistan
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-amber-500 shrink-0" />
-                <span>+1 (123) 456-7890</span>
+                <span>+923091945834</span>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-amber-500 shrink-0" />
