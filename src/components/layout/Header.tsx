@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { MobileNav } from "./MobileNav";
 import { Button } from "@/components/ui/button";
@@ -36,9 +37,15 @@ export function Header() {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-heading font-bold text-white tracking-wide">
-            WAFI <span className="text-amber-500">ENGINEERING</span>
-          </span>
+          <div className="relative h-12 w-48">
+            <Image
+              src="/images/Logo.jpg"
+              alt="Wafi Engineering"
+              fill
+              className="object-contain object-left"
+              priority
+            />
+          </div>
         </Link>
 
         {/* Desktop Nav */}

@@ -73,7 +73,7 @@ export async function sendEmail(
       to: email,
 
       // ✅ You receive a copy
-      cc: "WafiEngineering1@gmail.com",
+      cc: "info@WafiEngineering.com",
 
       // ✅ Reply goes to the user
       replyTo: email,

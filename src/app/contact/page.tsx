@@ -80,7 +80,7 @@ export default function ContactPage() {
             {/* Map Embed */}
             <div className="mt-12 w-full h-64 rounded-xl overflow-hidden border border-slate-800">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3106.9634934898236!2d-77.1328909241589!3d38.85614987173361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b7b4742e205165%3A0xc6cb593dc3f2824!2sSkyline%20Tower%2C%205103%20Leesburg%20Pike%2C%20Falls%20Church%2C%20VA%2022041%2C%20USA!5e0!3m2!1sen!2s!4v1710000000000!5m2!1sen!2s"
+                src="https://maps.google.com/maps?q=Wafi%20Engineering%2C%20Street%20No.%201%2C%20Opposite%20Income%20Tax%20Office%2C%20G.T.%20Road%2C%20Gujranwala%2C%20Pakistan&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

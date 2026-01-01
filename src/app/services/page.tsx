@@ -5,6 +5,7 @@ import { businessAreas } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Building2, Cpu, Package } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 const iconMap = {
@@ -43,16 +44,12 @@ export default function ServicesPage() {
                 {/* Image/Header Section */}
                 <div className="relative h-64 w-full overflow-hidden rounded-t-3xl bg-slate-800">
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent z-10" />
-                  {/* Placeholder for actual image - using a subtle pattern or actual image path if available */}
-                  <div className="absolute inset-0 flex items-center justify-center text-slate-600 bg-slate-800 group-hover:scale-105 transition-transform duration-700">
-                    {/* We use the same text placeholder technique but stylized */}
-                    <div className="flex flex-col items-center gap-2 opacity-50">
-                      <Icon className="w-12 h-12" />
-                      <span className="text-sm font-mono tracking-widest uppercase">
-                        Service Image
-                      </span>
-                    </div>
-                  </div>
+                  <Image
+                    src={area.image}
+                    alt={area.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
 
                   {/* Floating Icon */}
                   <div className="absolute -bottom-6 left-8 z-20">

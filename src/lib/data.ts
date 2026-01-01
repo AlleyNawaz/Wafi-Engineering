@@ -6,7 +6,7 @@ export const businessAreas = [
       "Designing and constructing future-ready residential and commercial infrastructure with renewable energy integration.",
     icon: "Building2",
     href: "/services/infrastructure",
-    image: "/images/infrastructure.jpg",
+    image: "/images/services/SustainableInfrastructure.jpeg",
   },
   {
     id: "digital",
@@ -15,7 +15,7 @@ export const businessAreas = [
       "Advanced aerospace engineering, UAV design, CFD analysis, and custom software solutions.",
     icon: "Cpu",
     href: "/services/digital-engineering",
-    image: "/images/digital.jpg",
+    image: "/images/services/IntegratedDigitalUp.jpeg",
   },
   {
     id: "products",
@@ -24,7 +24,7 @@ export const businessAreas = [
       "Manufacturing and exporting premium dental instruments and energy-efficient BLDC fans.",
     icon: "Package",
     href: "/services/products",
-    image: "/images/products.jpg",
+    image: "/images/services/EngineeredProduct.jpeg",
   },
 ];
 
@@ -35,13 +35,13 @@ export const projects = [
     category: "Infrastructure",
     image: "/images/500kv.png",
     description:
-      "Industrial grid-tied solar system for textile manufacturing unit.",
+      "Industrial grid-tied solar system for a flour mill manufacturing unit.",
   },
   {
     id: 2,
     title: "UAV Prototype Design",
     category: "Digital",
-    image: "/images/Uav.avif",
+    image: "/images/UavP.jpeg",
     description:
       "Aerodynamic analysis and prototyping of long-range surveillance UAV.",
   },
@@ -65,7 +65,7 @@ export const projects = [
     id: 5,
     title: "Aerospace CFD Analysis",
     category: "Digital",
-    image: "/images/Aerospace.png",
+    image: "/images/AerospaceUp.png",
     description:
       "Computational Fluid Dynamics analysis for wing lift optimization.",
   },
@@ -73,17 +73,25 @@ export const projects = [
     id: 6,
     title: "BLDC Smart Fans",
     category: "Products",
-    image: "/images/Fans.avif",
+    image: "/images/fan.jpeg",
     description: "IoT-enabled energy efficient ceiling fans for smart homes.",
+  },
+  {
+    id: 7,
+    title: "1 Kanal House Construction",
+    category: "Infrastructure",
+    image: "/images/1Kanal.jpeg",
+    description:
+      "Modern 1 Kanal residential construction with premium finishing and sustainable design.",
   },
 ];
 
 export const testimonials = [
   {
     id: 1,
-    name: "John Smith",
-    role: "Operations Director",
-    company: "Mega Textiles",
+    name: "Ch. Akmal",
+    role: "CEO",
+    company: "MashaAllah Rice Mills",
     quote:
       "Wafi Engineering transformed our energy consumption with their solar solution. Their professionalism and technical expertise are unmatched.",
   },

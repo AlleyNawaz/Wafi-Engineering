@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Facebook, Linkedin, Twitter, Mail, MapPin, Phone } from "lucide-react";
 import { WhatsAppIcon } from "@/components/icons/WhatsAppIcon";
@@ -10,9 +11,14 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <h3 className="text-xl font-heading font-bold text-white mb-6">
-              Wafi Engineering
-            </h3>
+            <div className="relative h-12 w-48 mb-6">
+              <Image
+                src="/images/Logo.jpg"
+                alt="Wafi Engineering"
+                fill
+                className="object-contain object-left"
+              />
+            </div>
             <p className="mb-6 text-slate-400">
               Sustainable Infrastructure, Integrated Digital Engineering, &
               Engineered Product Solutions for a better future.
