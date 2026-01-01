@@ -41,7 +41,7 @@ export const projects = [
     id: 2,
     title: "UAV Prototype Design",
     category: "Digital",
-    image: "/images/UavP.jpeg",
+    image: "/images/UavP.png",
     description:
       "Aerodynamic analysis and prototyping of long-range surveillance UAV.",
   },
@@ -65,7 +65,7 @@ export const projects = [
     id: 5,
     title: "Aerospace CFD Analysis",
     category: "Digital",
-    image: "/images/AerospaceUp.png",
+    image: "/images/CFDUp.jpeg",
     description:
       "Computational Fluid Dynamics analysis for wing lift optimization.",
   },
