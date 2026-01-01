@@ -6,7 +6,7 @@ export const businessAreas = [
       "Designing and constructing future-ready residential and commercial infrastructure with renewable energy integration.",
     icon: "Building2",
     href: "/services/infrastructure",
-    image: "/images/services/SustainableInfrastructure.jpeg",
+    image: "/images/SustainableInfrastructure.jpeg",
   },
   {
     id: "digital",
@@ -15,7 +15,7 @@ export const businessAreas = [
       "Advanced aerospace engineering, UAV design, CFD analysis, and custom software solutions.",
     icon: "Cpu",
     href: "/services/digital-engineering",
-    image: "/images/services/IntegratedDigitalUp.jpeg",
+    image: "/images/IntegratedDigitalUp.jpeg",
   },
   {
     id: "products",
@@ -24,7 +24,7 @@ export const businessAreas = [
       "Manufacturing and exporting premium dental instruments and energy-efficient BLDC fans.",
     icon: "Package",
     href: "/services/products",
-    image: "/images/services/EngineeredProduct.jpeg",
+    image: "/images/EngineeredProduct.jpeg",
   },
 ];
 
