@@ -39,7 +39,7 @@ export function Header() {
         <Link href="/" className="flex items-center space-x-2">
           <div className="relative h-12 w-48">
             <Image
-              src="/images/Logo.jpg"
+              src="/images/Logo.png"
               alt="Wafi Engineering"
               fill
               className="object-contain object-left"

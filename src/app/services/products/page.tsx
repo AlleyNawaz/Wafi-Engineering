@@ -2,6 +2,7 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, Fan, Settings, Globe } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = {
   title: "Engineered Product Solutions | Wafi Engineering",
@@ -15,6 +16,7 @@ const products = [
     description:
       "Next-generation ceiling fans with brushless DC motors for up to 65% energy savings.",
     icon: Fan,
+    image: "/images/fan2.jpeg",
     features: [
       "Remote & Smart Control",
       "Silent Operation",
@@ -28,6 +30,7 @@ const products = [
     description:
       "High-precision surgical and dental instruments manufactured to ISO standards.",
     icon: Settings,
+    image: "/images/dental2.jpeg",
     features: [
       "Surgical Grade Steel",
       "ISO & CE Certified",
@@ -53,13 +56,16 @@ export default function ProductsPage() {
               key={index}
               className="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 group hover:border-amber-500/50 transition-colors"
             >
-              <div className="h-48 bg-slate-800 flex items-center justify-center text-slate-600 relative">
-                <div className="absolute top-4 right-4 bg-slate-950/80 px-3 py-1 rounded-full text-xs font-bold text-amber-500 flex items-center border border-slate-700">
+              <div className="h-64 bg-slate-800 flex items-center justify-center text-slate-600 relative">
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute top-4 right-4 bg-slate-950/80 px-3 py-1 rounded-full text-xs font-bold text-amber-500 flex items-center border border-slate-700 z-10">
                   <Globe className="w-3 h-3 mr-2" /> Export Quality
                 </div>
-                {/* Placeholder Image */}
-                <product.icon className="w-16 h-16 text-slate-700 group-hover:text-slate-600 transition-colors" />
-                <span className="sr-only">{product.title} Image</span>
               </div>
 
               <div className="p-8">

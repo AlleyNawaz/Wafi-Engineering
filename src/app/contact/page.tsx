@@ -80,7 +80,7 @@ export default function ContactPage() {
             {/* Map Embed */}
             <div className="mt-12 w-full h-64 rounded-xl overflow-hidden border border-slate-800">
               <iframe
-                src="https://maps.google.com/maps?q=Wafi%20Engineering%2C%20Street%20No.%201%2C%20Opposite%20Income%20Tax%20Office%2C%20G.T.%20Road%2C%20Gujranwala%2C%20Pakistan&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                src="https://maps.google.com/maps?q=658C%2BX3R+Wafi+Engineering%2C+Gulshan+Colony%2C+Gujranwala&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

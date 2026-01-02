@@ -13,7 +13,7 @@ export function Footer() {
           <div>
             <div className="relative h-12 w-48 mb-6">
               <Image
-                src="/images/Logo.jpg"
+                src="/images/Logo.png"
                 alt="Wafi Engineering"
                 fill
                 className="object-contain object-left"

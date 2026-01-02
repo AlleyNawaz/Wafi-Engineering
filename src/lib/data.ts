@@ -120,7 +120,7 @@ export const leadership = [
     bio: "Visionary leader with over 15 years of experience in sustainable infrastructure and strategic management. Driving Wafi Engineering towards a greener future.",
     image: "/images/AliHamza.jpeg",
     linkedin: "https://www.linkedin.com/in/ali-hamza-931a27179/",
-    email: "WafiEngineering1@gmail.com",
+    email: "alihamza@wafiengineering.com",
   },
   {
     name: "Muhammad Usman",
@@ -128,6 +128,6 @@ export const leadership = [
     bio: "Operational excellence expert ensuring seamless execution of complex engineering projects across all business verticals.",
     image: "/images/Usman.png",
     linkedin: "https://www.linkedin.com/in/muhammad-usman-586044391/",
-    email: "WafiEngineering1@gmail.com",
+    email: "usman@wafiengineering.com",
   },
 ];
